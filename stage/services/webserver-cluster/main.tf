@@ -141,3 +141,13 @@ terraform {
     key = "stage/services/webserver-cluster/terraform.tfstate"
   }
 }
+
+data "terraform_remote_state" "db" {
+  backend = "s3"
+
+  config = {
+    bucket = "terraform-up-and-running-state-pmcg"
+    key    = "stage/data-stores/mysql/terraform.tfstate"
+    region = "us-east-2"
+  }
+}
