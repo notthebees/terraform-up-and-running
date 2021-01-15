@@ -7,8 +7,8 @@ resource "aws_autoscaling_group" "example" {
   ]
   health_check_type = "ELB"
 
-  min_size = 2
-  max_size = 10
+  min_size = var.min_size
+  max_size = var.max_size
 
   tag {
     key                 = "Name"
@@ -18,9 +18,10 @@ resource "aws_autoscaling_group" "example" {
 }
 
 resource "aws_launch_configuration" "example" {
-  image_id        = "ami-0c55b159cbfafe1f0"
-  instance_type   = "t2.micro"
-  security_groups = [aws_security_group.instance.id]
+  image_id      = "ami-0c55b159cbfafe1f0"
+  instance_type = var.instance_type
+  security_groups = [
+  aws_security_group.instance.id]
 
   user_data = data.template_file.user_data.rendered
 
