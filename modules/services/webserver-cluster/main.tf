@@ -132,16 +132,6 @@ resource "aws_lb_listener_rule" "asg" {
   }
 }
 
-terraform {
-  backend "s3" {
-    bucket         = "terraform-up-and-running-state-pmcg"
-    key            = "stage/services/webserver-cluster/terraform.tfstate"
-    region         = "us-east-2"
-    dynamodb_table = "terraform-up-and-running-locks"
-    encrypt        = true
-  }
-}
-
 data "terraform_remote_state" "db" {
   backend = "s3"
 
