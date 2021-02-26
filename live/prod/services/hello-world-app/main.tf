@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "hello_world_app" {
-  source = "../../../modules/services/hello-world-app"
+  source = "../../../../modules/services/hello-world-app"
 
   environment            = "stage"
   db_remote_state_bucket = "terraform-up-and-running-state-pmcg"
