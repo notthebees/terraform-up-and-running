@@ -2,10 +2,10 @@ provider "aws" {
   region = "us-east-2"
 }
 
-module "webserver_cluster" {
-  source = "../../../modules/services/webserver-cluster"
+module "hello_world_app" {
+  source = "../../../modules/services/hello-world-app"
 
-  cluster_name           = "webservers-stage"
+  environment            = "stage"
   db_remote_state_bucket = "terraform-up-and-running-state-pmcg"
   db_remote_state_key    = "stage/data-stores/mysql/terraform.tfstate"
 
